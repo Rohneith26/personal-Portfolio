@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rohneith Kotwal — Portfolio</title>
+
+  <style>
+    /* CSS Variables for colors and spacing */
+    :root {
+      --primary-color: #00e5ff;
+      --primary-hover: #00c1cc;
+      --background-dark: #0a0a0a;
+      --background-gradient-start: #008c9e;
+      --background-gradient-end: #005f6b;
+      --text-color-light: #ffffff;
+      --text-color-muted: #cccccc;
+      --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      --spacing-sm: 0.5rem;
+      --spacing-md: 1.5rem;
+      --spacing-lg: 2rem;
+      --border-radius: 25px;
+      --transition-speed: 0.3s;
+    }
+
+    /* Global Reset & base styles */
+    *, *::before, *::after {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+    body {
+      font-family: var(--font-family);
+      background-color: var(--background-dark);
+      color: var(--text-color-light);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+      outline-offset: 2px;
+      transition: color var(--transition-speed) ease;
+    }
+    a:focus, button:focus {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 3px;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: saturate(180%) blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--spacing-md) var(--spacing-lg);
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.8);
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.9rem;
+      color: var(--primary-color);
+      user-select: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-lg);
+    }
+
+    nav ul li {
+      display: inline-block;
+    }
+
+    nav ul li a {
+      font-weight: 600;
+      padding: var(--spacing-sm) 0;
+      position: relative;
+      font-size: 1rem;
+      color: var(--text-color-muted);
+      transition: color var(--transition-speed), border-bottom var(--transition-speed);
+    }
+    nav ul li a:hover,
+    nav ul li a:focus,
+    nav ul li a.active {
+      color: var(--primary-color);
+    }
+    nav ul li a.active::after,
+    nav ul li a:hover::after,
+    nav ul li a:focus::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;
+      height: 2px;
+      background: var(--primary-color);
+      border-radius: 2px;
+      transition: width var(--transition-speed);
+    }
+
+    /* Download Resume Button inside nav */
+    nav ul li.resume-btn {
+      margin-left: 1rem;
+    }
+    nav ul li.resume-btn a {
+      display: inline-block;
+      padding: 0.5rem 1.2rem;
+      background-color: var(--primary-color);
+      color: var(--background-dark);
+      border-radius: var(--border-radius);
+      font-weight: 700;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 10px rgba(0, 229, 255, 0.5);
+      transition: background-color var(--transition-speed);
+    }
+    nav ul li.resume-btn a:hover,
+    nav ul li.resume-btn a:focus {
+      background-color: var(--primary-hover);
+      box-shadow: 0 6px 15px rgba(0, 193, 204, 0.7);
+    }
+
+    /* Contact Me Button */
+    #contactBtn {
+      padding: 0.5rem 1.5rem;
+      background-color: var(--primary-color);
+      color: var(--background-dark);
+      border: none;
+      border-radius: var(--border-radius);
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 229, 255, 0.6);
+      transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
+    }
+    #contactBtn:hover,
+    #contactBtn:focus {
+      background-color: var(--primary-hover);
+      box-shadow: 0 6px 15px rgba(0, 193, 204, 0.8);
+      outline: none;
+    }
+
+    /* HERO SECTION */
+    main.hero {
+      display: flex;
+      flex-wrap: wrap;
+      min-height: calc(100vh - 88px); /* Account for header */
+      padding: var(--spacing-lg);
+      background: linear-gradient(135deg, var(--background-gradient-start), var(--background-gradient-end));
+      border-radius: 16px;
+      margin: var(--spacing-lg);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+      color: var(--text-color-light);
+    }
+
+    /* Left column */
+    .hero .left {
+      flex: 1 1 45%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: var(--spacing-md);
+      padding: var(--spacing-lg);
+    }
+    .intro {
+      font-size: 1.25rem;
+      font-weight: 400;
+      opacity: 0.85;
+      letter-spacing: 0.05em;
+    }
+    .left h1 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-shadow: 0 3px 8px rgba(0,0,0,0.6);
+    }
+    .title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      opacity: 0.9;
+      letter-spacing: 0.04em;
+    }
+
+    /* Social icons */
+    .social-icons {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: var(--spacing-md);
+    }
+    .social-icons a {
+      display: inline-block;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s;
+      background: #0a0a0a;
+    }
+    .social-icons a:hover,
+    .social-icons a:focus {
+      transform: translateY(-6px) scale(1.1);
+      box-shadow: 0 12px 30px rgba(0,229,255,0.8);
+      outline: none;
+    }
+    .social-icons img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 0 1px rgba(0,0,0,0.5));
+      transition: filter 0.3s ease;
+    }
+    .social-icons a:hover img,
+    .social-icons a:focus img {
+      filter: drop-shadow(0 0 5px var(--primary-color));
+    }
+
+    /* Right column */
+    .hero .right {
+      flex: 1 1 45%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--spacing-lg);
+      background: #111;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.7);
+    }
+    .right img {
+      width: 100%;
+      max-width: 460px;
+      border-radius: 16px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+      animation: fadeInUp 1s ease forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      main.hero {
+        flex-direction: column;
+        margin: var(--spacing-md);
+        padding: var(--spacing-md);
+        border-radius: 12px;
+      }
+      .hero .left,
+      .hero .right {
+        flex: 1 1 100%;
+        padding: var(--spacing-md);
+      }
+      .left h1 {
+        font-size: 2.75rem;
+      }
+      .title {
+        font-size: 1.25rem;
+      }
+      .social-icons a {
+        width: 48px;
+        height: 48px;
+      }
+      .right img {
+        max-width: 90vw;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+      }
+      nav ul li.resume-btn {
+        order: 100; /* Push resume button last */
+        width: 100%;
+        text-align: center;
+      }
+      nav ul li.resume-btn a {
+        width: 100%;
+        display: inline-block;
+        padding: 0.75rem 0;
+      }
+      #contactBtn {
+        width: 100%;
+        margin-top: 0.5rem;
+      }
+    }
+
+  </style>
+
+  <script defer>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Contact button alert
+      const contactBtn = document.getElementById("contactBtn");
+      contactBtn.addEventListener("click", () => {
+        alert("Email me at: rohneithkotwal07@gmail.com");
+      });
+
+      // Active nav link highlight
+      const navLinks = document.querySelectorAll("nav a");
+      navLinks.forEach(link => {
+        link.addEventListener("click", e => {
+          navLinks.forEach(l => l.classList.remove("active"));
+          e.target.classList.add("active");
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+
+  <header>
+    <div class="logo" aria-label="Logo Rohneith Kotwal">RK</div>
+    <nav aria-label="Primary Navigation">
+      <ul>
+        <li><a href="about.html" target="_blank" rel="noopener" tabindex="0">About</a></li>
+        <li><a href="skills.html" target="_blank" rel="noopener" tabindex="0">Skills</a></li>
+        <li><a href="Portfolio.html" target="_blank" rel="noopener" tabindex="0">Portfolio</a></li>
+        <li class="resume-btn">
+          <a href="Rohneith_Kotwal_Resume_Updated.pdf" target="_blank" rel="noopener" download="Rohneith_Kotwal_Resume.pdf" tabindex="0" aria-label="Download Resume">
+            Download Resume
+          </a>
+        </li>
+        <li><button id="contactBtn" type="button" tabindex="0" aria-label="Contact Me">Contact Me</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="hero" role="main">
+    <section class="left" aria-labelledby="intro-heading">
+      <p class="intro" id="intro-heading">Hi, I’m</p>
+      <h1>Rohneith Kotwal</h1>
+      <p class="title">Front‑end Developer & UI Designer</p>
+
+      <nav class="social-icons" aria-label="Social Media Links">
+        <a href="mailto:rohneithkotwal07@gmail.com" target="_blank" rel="noopener" aria-label="Send Email">
+          <img src="communication.png" alt="Email icon" />
+        </a>
+        <a href="https://github.com/rohneith" target="_blank" rel="noopener" aria-label="GitHub Profile">
+          <img src="github.png" alt="GitHub icon" />
+        </a>
+        <a href="https://linkedin.com/in/rohneithkotwal" target="_blank" rel="noopener" aria-label="LinkedIn Profile">
+          <img src="linkedin.png" alt="LinkedIn icon" />
+        </a>
+      </nav>
+    </section>
+
+    <section class="right" aria-label="Portrait of Rohneith Kotwal">
+      <img src="pics.jpeg" alt="Portrait photo of Rohneith Kotwal" />
+    </section>
+  </main>
+
+</body>
+</html>
